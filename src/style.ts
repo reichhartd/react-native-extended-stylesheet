@@ -8,12 +8,20 @@ import Value from './value';
 import utils from './utils';
 
 export default class {
+  source;
+  varsArr;
+  processedSource;
+  extractedVars;
+  extractedProps;
+  calculatedVars;
+  calculatedProps;
+
   /**
    * Constructor
    * @param {Object} source plain object style with variables
    * @param {Array} [varsArr] array of vars objects
    */
-  constructor(source, varsArr = []) {
+  constructor(source, varsArr: any[] = []) {
     this.source = source;
     this.varsArr = varsArr;
     this.processedSource = null;

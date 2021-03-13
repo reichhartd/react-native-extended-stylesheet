@@ -20,7 +20,7 @@ export default {
  * @param {String} str
  */
 function isOperation(str) {
-  let opInfo = findOperator(str);
+  let opInfo : any = findOperator(str);
   if (opInfo) {
     opInfo.v1 = str.substr(0, opInfo.pos).trim();
     opInfo.v2 = str.substr(opInfo.pos + 1).trim();

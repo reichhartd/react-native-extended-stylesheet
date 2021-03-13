@@ -133,7 +133,7 @@ describe('style', function () {
         borderColor: 'black',
       }
     });
-    expect(Math.random.mock.calls.length).toBe(1);
+    expect((Math.random as any).mock.calls.length).toBe(1);
   });
 
   it('should support media queries', function () {

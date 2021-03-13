@@ -40,7 +40,7 @@ function calc(str, varsArr) {
  * @returns {null|Object}
  */
 function extract(obj) {
-  return Object.keys(obj).reduce((res, key) => {
+  return Object.keys(obj).reduce((res : any, key) => {
     if (isVar(key)) {
       res = res || {};
       res[key] = obj[key];
@@ -54,7 +54,7 @@ function extract(obj) {
  * @param {String} name variable with $, e.g. '$myVar'
  * @param {Array} varsArr array of variable sets
  */
-function get(name, varsArr) {
+function get(name, varsArr?) {
   if (!Array.isArray(varsArr)) {
     throw new Error('You should pass vars array to vars.get()');
   }

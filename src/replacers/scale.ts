@@ -22,7 +22,7 @@ export default {
  * @param {String} prop
  * @returns {Boolean}
  */
-function isScalable(value, prop) {
+function isScalable(value, prop?) {
   return typeof value === 'number' && isScalableProp(prop);
 }
 

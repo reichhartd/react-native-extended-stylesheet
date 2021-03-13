@@ -11,7 +11,7 @@
 import {Dimensions, Platform, I18nManager} from 'react-native';
 import mediaQuery from 'css-mediaquery';
 import utils from '../utils';
-      
+
 const PREFIX = '@media';
 
 export default {
@@ -33,7 +33,7 @@ function isMediaQuery(str) {
  * @returns {null|Object}
  */
 function process(obj) {
-  const mqKeys = [];
+  const mqKeys : any = [];
 
   // copy non-media-query stuff
   const res = Object.keys(obj).reduce((res, key) => {
@@ -48,7 +48,7 @@ function process(obj) {
   // apply media query stuff
   if (mqKeys.length) {
     const matchObject = getMatchObject();
-    mqKeys.forEach(key => {
+    mqKeys.forEach((key : any) => {
       const mqStr = key.replace(PREFIX, '');
       const isMatch = mediaQuery.match(mqStr, matchObject);
       if (isMatch) {

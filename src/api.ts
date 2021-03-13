@@ -13,6 +13,12 @@ import child from './child';
 const BUILD_EVENT = 'build';
 
 export default class EStyleSheet {
+  child;
+  builded;
+  sheets;
+  globalVars;
+  listeners;
+
   /**
    * Constructor
    */

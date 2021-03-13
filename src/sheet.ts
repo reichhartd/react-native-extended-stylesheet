@@ -5,6 +5,15 @@ import vars from './replacers/vars';
 import mediaQueries from './replacers/media-queries';
 
 export default class {
+  source;
+  result;
+  cache;
+  nativeSheet;
+  globalVars;
+  localVars;
+  allVars;
+  processedSource;
+
   /**
    * Constructor
    * @param {Object} source
@@ -24,7 +33,7 @@ export default class {
    * Calculates sheet and update result
    * @param {Object} globalVars
    */
-  calc(globalVars) {
+  calc(globalVars?) {
     this.globalVars = globalVars;
     this.clearResult();
     if (this.hasCache()) {

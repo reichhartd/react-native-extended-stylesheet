@@ -9,6 +9,13 @@ import operation from './replacers/operation';
 import scale from './replacers/scale';
 
 export default class Value {
+  value;
+  outValue;
+  prop;
+  varsArr;
+  stack;
+  isOperation;
+
   /**
    * Constructor
    *
@@ -19,7 +26,7 @@ export default class Value {
    * @param {Array} [options.stack] stack of calls when resolving variable
    * @param {Boolean} [options.isOperation] is value calculated inside operation
    */
-  constructor(value, prop, varsArr = [], options = {}) {
+  constructor(value, prop, varsArr: any[] = [], options: any = {}) {
     this.value = value;
     this.outValue = null;
     this.prop = prop;
