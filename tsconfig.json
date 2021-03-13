@@ -5,6 +5,7 @@
     "strict": true,
     "allowSyntheticDefaultImports": true,
     "esModuleInterop": true,
-    "lib": ["es6"]
+    "lib": ["es6"],
+    "noImplicitAny": false
   }
 }
