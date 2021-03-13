@@ -14,7 +14,7 @@
     "test": "jest --onlyChanged",
     "tt": "jest --coverage",
     "tr": "BABEL_ENV=runtyper jest --no-cache",
-    "build": "tsc",
+    "test:types": "tsc --noEmit",
     "ci": "run-s code tt tr test:types",
     "sync-yarn-lock": "rm yarn.lock && yarn import && git add -A yarn.lock && (git diff-index --quiet HEAD -- yarn.lock || git commit -m'sync yarn.lock' --no-verify)",
     "coveralls": "coveralls < coverage/lcov.info",
@@ -22,7 +22,8 @@
     "postrelease": "git push --follow-tags --no-verify",
     "release": "npm version $VER && npm publish",
     "release-patch": "VER=patch npm run release",
-    "release-minor": "VER=minor npm run release"
+    "release-minor": "VER=minor npm run release",
+    "build": "tsc"
   },
   "husky": {
     "hooks": {
