@@ -1,6 +1,10 @@
 {
-  "extends": "eslint:recommended",
-  "parser": "babel-eslint",
+  "root": true,
+  "extends": [
+    "eslint:recommended",
+    "plugin:@typescript-eslint/recommended"
+  ],
+  "parser": "@typescript-eslint/parser",
 
   "env": {
     "es6": true,
@@ -11,7 +15,8 @@
   "plugins": [
     "react",
     "react-native",
-    "import"
+    "import",
+    "@typescript-eslint"
   ],
 
   "rules": {
@@ -57,6 +62,10 @@
     "react/sort-comp": 0,
     "react/jsx-wrap-multilines": 1,
     "react-native/no-unused-styles": 2,
-    "react-native/split-platform-components": 2
+    "react-native/split-platform-components": 2,
+
+    "prefer-const": 1,
+    "@typescript-eslint/no-empty-function": 1,
+    "@typescript-eslint/no-var-requires": 1
   }
 }
