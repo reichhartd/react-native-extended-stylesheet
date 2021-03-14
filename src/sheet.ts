@@ -5,20 +5,20 @@ import vars from './replacers/vars';
 import mediaQueries from './replacers/media-queries';
 
 export default class {
-  source;
-  result;
-  cache;
-  nativeSheet;
-  globalVars;
-  localVars;
-  allVars;
-  processedSource;
+  source:any;
+  result:any;
+  cache:any;
+  nativeSheet:any;
+  globalVars:any;
+  localVars:any;
+  allVars:any;
+  processedSource:any;
 
   /**
    * Constructor
    * @param {Object} source
    */
-  constructor(source) {
+  constructor(source:any) {
     this.source = source;
     this.result = {};
     this.cache = new Map(); // cache result for each theme
@@ -33,7 +33,7 @@ export default class {
    * Calculates sheet and update result
    * @param {Object} globalVars
    */
-  calc(globalVars?) {
+  calc(globalVars?:any) {
     this.globalVars = globalVars;
     this.clearResult();
     if (this.hasCache()) {
@@ -79,7 +79,7 @@ export default class {
     });
   }
 
-  calcStyle(key, styleProps) {
+  calcStyle(key:any, styleProps:any) {
     const style = new Style(styleProps, this.allVars);
     const {calculatedProps, calculatedVars} = style.calc();
     const merged = Object.assign({}, calculatedVars, calculatedProps);

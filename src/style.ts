@@ -8,20 +8,20 @@ import Value from './value';
 import utils from './utils';
 
 export default class {
-  source;
-  varsArr;
-  processedSource;
-  extractedVars;
-  extractedProps;
-  calculatedVars;
-  calculatedProps;
+  source:any;
+  varsArr:any;
+  processedSource:any;
+  extractedVars:any;
+  extractedProps:any;
+  calculatedVars:any;
+  calculatedProps:any;
 
   /**
    * Constructor
    * @param {Object} source plain object style with variables
    * @param {Array} [varsArr] array of vars objects
    */
-  constructor(source, varsArr: any[] = []) {
+  constructor(source:any, varsArr: any[] = []) {
     this.source = source;
     this.varsArr = varsArr;
     this.processedSource = null;
@@ -81,8 +81,8 @@ export default class {
  * @param {Array} varsArr
  * @returns {Object}
  */
-function calcPlainObject(obj, varsArr) {
-  return Object.keys(obj).reduce((res, prop) => {
+function calcPlainObject(obj:any, varsArr:any) {
+  return Object.keys(obj).reduce((res:any, prop) => {
     res[prop] = calcStyleValue(prop, obj[prop], varsArr);
     return res;
   }, {});
@@ -94,7 +94,7 @@ function calcPlainObject(obj, varsArr) {
  * @param {*} value
  * @param {Array} varsArr
  */
-function calcStyleValue(prop, value, varsArr) {
+function calcStyleValue(prop:any, value:any, varsArr:any) {
   if (value && typeof value === 'object') {
     return Array.isArray(value)
       ? value.map(obj => calcPlainObject(obj, varsArr))

@@ -17,7 +17,7 @@ export default {
  * Is string equals to another variable: '$varName'
  * @param {String} str
  */
-function isVar(str) {
+function isVar(str:any) {
   return typeof str === 'string' && str.charAt(0) === PREFIX;
 }
 
@@ -26,7 +26,7 @@ function isVar(str) {
  * @param {String} str variable name with $, e.g. '$color'
  * @param {Array<Object>} varsArr array of variable sets to search into.
  */
-function calc(str, varsArr) {
+function calc(str:any, varsArr:any) {
   let realValue = get(str, varsArr);
   if (realValue === undefined) {
     throw new Error(`Unresolved variable: ${str}`);
@@ -39,7 +39,7 @@ function calc(str, varsArr) {
  * @param {Object} obj
  * @returns {null|Object}
  */
-function extract(obj) {
+function extract(obj:any) {
   return Object.keys(obj).reduce((res : any, key) => {
     if (isVar(key)) {
       res = res || {};
@@ -54,7 +54,7 @@ function extract(obj) {
  * @param {String} name variable with $, e.g. '$myVar'
  * @param {Array} varsArr array of variable sets
  */
-function get(name, varsArr?) {
+function get(name:any, varsArr?:any) {
   if (!Array.isArray(varsArr)) {
     throw new Error('You should pass vars array to vars.get()');
   }

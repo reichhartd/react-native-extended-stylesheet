@@ -17,14 +17,14 @@ export let I18nManager = {
 };
 
 export let StyleSheet = {
-  create(obj) {
-    return Object.keys(obj).reduce((res, key, index) => {
+  create(obj:any) {
+    return Object.keys(obj).reduce((res:any, key, index) => {
       res[key] = index;
       return res;
     }, {});
   },
-  flatten(arr) {
-    return arr.reduce((res, item) => Object.assign(res, item), {});
+  flatten(arr:any) {
+    return arr.reduce((res:any, item:any) => Object.assign(res, item), {});
   },
   hairlineWidth: 1
 };

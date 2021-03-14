@@ -22,7 +22,7 @@ export default {
  * @param {String} prop
  * @returns {Boolean}
  */
-function isScalable(value, prop?) {
+function isScalable(value:any, prop:any) {
   return typeof value === 'number' && isScalableProp(prop);
 }
 
@@ -32,7 +32,7 @@ function isScalable(value, prop?) {
  * @param {Number} scaleFactor
  * @returns {number}
  */
-function calc(value, scaleFactor) {
+function calc(value:any, scaleFactor:any) {
   if (typeof value !== 'number') {
     throw new Error('Invalid value for scale: ' + value);
   }
@@ -42,7 +42,7 @@ function calc(value, scaleFactor) {
   return value * scaleFactor;
 }
 
-function isScalableProp(prop) {
+function isScalableProp(prop:any) {
   if (typeof prop !== 'string') {
     return false;
   }

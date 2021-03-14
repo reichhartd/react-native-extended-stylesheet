@@ -33,7 +33,7 @@ export default {
  * @param {String} str
  * @returns {boolean}
  */
-function isPercent(str) {
+function isPercent(str:any) {
   return str.charAt(str.length - 1) === SUFFIX;
 }
 
@@ -43,13 +43,13 @@ function isPercent(str) {
  * @param {String} prop
  * @returns {number}
  */
-function calc(str, prop) {
+function calc(str:any, prop:any) {
   let percent = parseInt(str.substring(0, str.length - 1), 10);
   let base = isVertical(prop) ? height : width;
   return base * percent / 100;
 }
 
-function isVertical(prop) {
+function isVertical(prop:any) {
   prop = prop.toLowerCase();
   if (V_PROPS.some(p => prop.indexOf(p) >= 0)) {
     return true;

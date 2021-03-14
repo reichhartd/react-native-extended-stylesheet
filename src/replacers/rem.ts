@@ -15,7 +15,7 @@ export default {
  * @param {String} str
  * @returns {Boolean}
  */
-function isRem(str) {
+function isRem(str:any) {
   return str.substr(-SUFFIX.length) === SUFFIX;
 }
 
@@ -25,7 +25,7 @@ function isRem(str) {
  * @param {Number} rem
  * @returns {number}
  */
-function calc(str, rem = DEFAULT_REM) {
+function calc(str:any, rem = DEFAULT_REM) {
   let koefStr = str.substr(0, str.length - SUFFIX.length);
   let koef = koefStr === '' ? 1 : parseFloat(koefStr);
   if (isNaN(koef)) {

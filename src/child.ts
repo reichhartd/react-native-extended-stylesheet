@@ -9,7 +9,7 @@
  * @param {Number} index
  * @param {Number} count
  */
-export default function (styles, styleName, index, count) {
+export default function (styles:any, styleName:any, index:any, count:any) {
   if (!isNumber(index) || !isNumber(count)) {
     return styles[styleName];
   }
@@ -24,12 +24,12 @@ export default function (styles, styleName, index, count) {
   return result.length > 1 ? result : result[0];
 }
 
-function addStyle(result, styles, styleName, condition) {
+function addStyle(result:any, styles:any, styleName:any, condition:any) {
   if (styles[styleName] && condition) {
     result.push(styles[styleName]);
   }
 }
 
-function isNumber(value) {
+function isNumber(value:any) {
   return typeof value === 'number';
 }

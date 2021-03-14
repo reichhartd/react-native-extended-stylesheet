@@ -13,11 +13,11 @@ import child from './child';
 const BUILD_EVENT = 'build';
 
 export default class EStyleSheet {
-  child;
-  builded;
-  sheets;
-  globalVars;
-  listeners;
+  child:any;
+  builded:any;
+  sheets:any;
+  globalVars:any;
+  listeners:any;
 
   /**
    * Constructor
@@ -36,7 +36,7 @@ export default class EStyleSheet {
    * @param {Object} obj
    * @returns {Object}
    */
-  create(obj) {
+  create(obj:any) {
     const sheet = new Sheet(obj);
     // todo: add options param to allow create dynamic stylesheets that should not be stored
     this.sheets.push(sheet);
@@ -50,7 +50,7 @@ export default class EStyleSheet {
    * Builds all created stylesheets with passed variables
    * @param {Object} [rawGlobalVars]
    */
-  build(rawGlobalVars) {
+  build(rawGlobalVars:any) {
     this.builded = true;
     this._calcGlobalVars(rawGlobalVars);
     this._calcSheets();
@@ -63,7 +63,7 @@ export default class EStyleSheet {
    * @param {String} [prop]
    * @returns {*}
    */
-  value(expr, prop) {
+  value(expr:any, prop:any) {
     let varsArr = this.globalVars ? [this.globalVars] : [];
     return new Value(expr, prop, varsArr).calc();
   }
@@ -73,7 +73,7 @@ export default class EStyleSheet {
    * @param {String} event
    * @param {Function} listener
    */
-  subscribe(event, listener) {
+  subscribe(event:any, listener:any) {
     this._assertSubscriptionParams(event, listener);
     this.listeners[BUILD_EVENT] = this.listeners[BUILD_EVENT] || [];
     this.listeners[BUILD_EVENT].push(listener);
@@ -87,10 +87,10 @@ export default class EStyleSheet {
    * @param {String} event
    * @param {Function} listener
    */
-  unsubscribe(event, listener) {
+  unsubscribe(event:any, listener:any) {
     this._assertSubscriptionParams(event, listener);
     if (this.listeners[BUILD_EVENT]) {
-      this.listeners[BUILD_EVENT] = this.listeners[BUILD_EVENT].filter(item => item !== listener);
+      this.listeners[BUILD_EVENT] = this.listeners[BUILD_EVENT].filter((item:any) => item !== listener);
     }
   }
 
@@ -98,11 +98,11 @@ export default class EStyleSheet {
    * Clears all cached styles.
    */
   clearCache() {
-    this.sheets.forEach(sheet => sheet.clearCache());
+    this.sheets.forEach((sheet:any) => sheet.clearCache());
   }
 
   // todo: move global vars stuff to separate module
-  _calcGlobalVars(rawGlobalVars) {
+  _calcGlobalVars(rawGlobalVars:any) {
     if (rawGlobalVars) {
       this._checkGlobalVars(rawGlobalVars);
       // $theme is system variable used for caching
@@ -112,12 +112,12 @@ export default class EStyleSheet {
   }
 
   _calcSheets() {
-    this.sheets.forEach(sheet => sheet.calc(this.globalVars));
+    this.sheets.forEach((sheet:any) => sheet.calc(this.globalVars));
   }
 
-  _callListeners(event) {
+  _callListeners(event:any) {
     if (Array.isArray(this.listeners[event])) {
-      this.listeners[event].forEach(listener => listener());
+      this.listeners[event].forEach((listener:any) => listener());
     }
   }
 
@@ -132,13 +132,13 @@ export default class EStyleSheet {
     ];
     props.forEach(prop => {
       Object.defineProperty(this, prop, {
-        get: () => StyleSheet[prop],
+        get: () => (StyleSheet as any)[prop],
         enumerable: true,
       });
     });
   }
 
-  _checkGlobalVars(rawGlobalVars) {
+  _checkGlobalVars(rawGlobalVars:any) {
     Object.keys(rawGlobalVars).forEach(key => {
       if (!vars.isVar(key) && !mq.isMediaQuery(key)) {
         throw new Error(
@@ -149,7 +149,7 @@ export default class EStyleSheet {
     });
   }
 
-  _assertSubscriptionParams(event, listener) {
+  _assertSubscriptionParams(event:any, listener:any) {
     if (event !== BUILD_EVENT) {
       throw new Error(`Only '${BUILD_EVENT}' event is currently supported.`);
     }

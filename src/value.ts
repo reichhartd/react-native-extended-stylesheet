@@ -9,12 +9,12 @@ import operation from './replacers/operation';
 import scale from './replacers/scale';
 
 export default class Value {
-  value;
-  outValue;
-  prop;
-  varsArr;
-  stack;
-  isOperation;
+  value:any;
+  outValue:any;
+  prop:any;
+  varsArr:any;
+  stack:any;
+  isOperation:any;
 
   /**
    * Constructor
@@ -26,7 +26,7 @@ export default class Value {
    * @param {Array} [options.stack] stack of calls when resolving variable
    * @param {Boolean} [options.isOperation] is value calculated inside operation
    */
-  constructor(value, prop, varsArr: any[] = [], options: any = {}) {
+  constructor(value:any, prop:any, varsArr: any = [], options: any = {}) {
     this.value = value;
     this.outValue = null;
     this.prop = prop;
@@ -82,7 +82,7 @@ export default class Value {
    * @param {Array} actions
    * @param {String} str
    */
-  tryActions(actions, str) {
+  tryActions(actions:any, str:any) {
     // todo: use for.. of after https://github.com/facebook/react-native/issues/4676
     for (let i = 0; i < actions.length; i++) {
       let val = actions[i].call(this, str);
@@ -93,7 +93,7 @@ export default class Value {
     return null;
   }
 
-  tryCalcOperation(str) {
+  tryCalcOperation(str:any) {
     let opInfo = operation.isOperation(str);
     if (!opInfo) {
       return null;
@@ -114,7 +114,7 @@ export default class Value {
     return operation.exec(opInfo);
   }
 
-  calcOperandValue(str) {
+  calcOperandValue(str:any) {
     let actions = [
       this.tryCalcVar,
       this.tryCalcPercent,
@@ -124,7 +124,7 @@ export default class Value {
     return this.tryActions(actions, str);
   }
 
-  tryCalcVar(str) {
+  tryCalcVar(str:any) {
     if (vars.isVar(str)) {
       let val = vars.calc(str, this.varsArr);
       if (this.stack.indexOf(str) >= 0) {
@@ -144,7 +144,7 @@ export default class Value {
   /**
    * Tries calc percent
    */
-  tryCalcPercent(str) {
+  tryCalcPercent(str:any) {
     if (percent.isPercent(str)) {
       return percent.calc(str, this.prop);
     }
@@ -154,7 +154,7 @@ export default class Value {
   /**
    * Tries calc rem
    */
-  tryCalcRem(str) {
+  tryCalcRem(str:any) {
     if (rem.isRem(str)) {
       let remValue = vars.get('$rem', this.varsArr);
       return rem.calc(str, remValue);
@@ -166,7 +166,7 @@ export default class Value {
   /**
    * Tries calc float value from string
    */
-  tryCalcFloat(str) {
+  tryCalcFloat(str:any) {
     let val = parseFloat(str);
     return !isNaN(val) ? val : null;
   }

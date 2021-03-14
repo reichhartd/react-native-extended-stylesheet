@@ -23,7 +23,7 @@ export default {
  * Is string is media query
  * @param {String} str
  */
-function isMediaQuery(str) {
+function isMediaQuery(str:any) {
   return typeof str === 'string' && str.indexOf(PREFIX) === 0;
 }
 
@@ -32,11 +32,11 @@ function isMediaQuery(str) {
  * @param {Object} obj
  * @returns {null|Object}
  */
-function process(obj) {
+function process(obj:any) {
   const mqKeys : any = [];
 
   // copy non-media-query stuff
-  const res = Object.keys(obj).reduce((res, key) => {
+  const res = Object.keys(obj).reduce((res:any, key) => {
     if (!isMediaQuery(key)) {
       res[key] = obj[key];
     } else {
@@ -82,7 +82,7 @@ function getMatchObject() {
  * @param {Object} obj
  * @param {Object} mqObj
  */
-function merge(obj, mqObj) {
+function merge(obj:any, mqObj:any) {
   Object.keys(mqObj).forEach(key => {
     if (utils.isObject(obj[key]) && utils.isObject(mqObj[key])) {
       Object.assign(obj[key], mqObj[key]);
