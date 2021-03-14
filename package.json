@@ -45,6 +45,7 @@
   "devDependencies": {
     "@babel/core": "^7.5.0",
     "@babel/runtime": "^7.5.0",
+    "@types/css-mediaquery": "^0.1.0",
     "@types/jest": "^24.8.0",
     "@types/react-native": "^0.60.0",
     "babel-eslint": "^10.0.2",
